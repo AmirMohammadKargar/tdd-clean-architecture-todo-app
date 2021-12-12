@@ -38,14 +38,16 @@ class _TodoScreenState extends State<TodoScreen> {
                   listener: (context, state) {},
                   builder: (context, state) {
                     if (state is Loaded) {
-                      return Column(
-                        children: [
-                          const CustomDivider(),
-                          _buildCalender(state),
-                          const CustomDivider(),
-                          _buildDayTitle(state),
-                          _buildTaskList(state),
-                        ],
+                      return Expanded(
+                        child: Column(
+                          children: [
+                            const CustomDivider(),
+                            _buildCalender(state),
+                            const CustomDivider(),
+                            _buildDayTitle(state),
+                            _buildTaskList(state),
+                          ],
+                        ),
                       );
                     } else if (state is Error) {
                       return const CustomErrorWidget();

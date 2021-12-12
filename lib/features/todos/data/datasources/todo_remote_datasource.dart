@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 import 'package:todo/core/constant/urls.dart';
 import 'package:todo/core/errors/exceptions.dart';
@@ -19,7 +18,7 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
 
   @override
   Future<TodoModel> getTodoFromRemoteDataSource() async {
-    final response = await client.get("${dotenv.env['BASE_URL']}$TODO_LIST");
+    final response = await client.get("$TODO_LIST");
     if (response.statusCode == 200) {
       return TodoModel.fromJson(response.data);
     } else {
